@@ -25,7 +25,7 @@ pipeline {
   // After Pipeline completes the Pod is killed so every run will have clean
   // workspace
   agent {
-    label 'maven'
+    label 'maven360'
   }
 
   // Pipeline Stages start here
