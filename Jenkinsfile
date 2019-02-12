@@ -25,7 +25,10 @@ pipeline {
   // After Pipeline completes the Pod is killed so every run will have clean
   // workspace
   agent {
-    label 'Maven360'
+   docker {
+            image 'maven:3-alpine'
+            args '-v $HOME/.m2:/root/.m2'
+   }
   }
 
   // Pipeline Stages start here
