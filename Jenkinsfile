@@ -15,6 +15,7 @@ openshift.withCluster() {
   env.DEV = "${APP_NAME}-dev"
   env.STAGE = "${APP_NAME}-stage"
   env.PROD = "${APP_NAME}-prod"
+  env.APPLICATION_SOURCE_REPO = "https://github.com/dampnsk/spring-devops.git"
 }
 
 pipeline {
