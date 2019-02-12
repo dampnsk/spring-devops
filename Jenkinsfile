@@ -18,8 +18,6 @@ openshift.withCluster() {
   env.APPLICATION_SOURCE_REPO = "https://github.com/dampnsk/spring-devops.git"
 }
 
-def mvnHome
-
 pipeline {
   // Use Jenkins Maven slave
   // Jenkins will dynamically provision this as OpenShift Pod
@@ -29,6 +27,11 @@ pipeline {
   
   // Pipeline Stages start here
   // Requeres at least one stage
+  
+  agent {
+    label 'maven'
+  }
+  
   stages {
 
     // Checkout source code
@@ -36,7 +39,6 @@ pipeline {
     // Jenkins Master but this will also pull this same code to this slave
     stage('Git Checkout') {
       steps {
-        mvnHome = tool 'Maven360'
         // Turn off Git's SSL cert check, uncomment if needed
         // sh 'git config --global http.sslVerify false'
         git url: "${APPLICATION_SOURCE_REPO}"
